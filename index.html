@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>گنجینه ی کتاب</title>
+<script>
+// اعمال تم قبل از رسم صفحه (جلوگیری از چشمک زدن)
+(function(){
+var t=null;
+try{t=localStorage.getItem("theme")}catch(e){}
+if(t!=="dark"&&t!=="light")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+document.documentElement.setAttribute("data-bs-theme",t);
+})();
+</script>
 <link href="/vendor/bootstrap.rtl.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'" rel="stylesheet">
 <link rel="stylesheet" href="/vendor/bootstrap-icons.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'">
 <link rel="stylesheet" href="/vendor/vazirmatn.css" onerror="this.onerror=null;this.href='https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap'">
@@ -305,6 +314,83 @@ background:linear-gradient(135deg,#fff7ed,#fff)
 .friend-modal-list{overflow-y:auto;flex:1;padding:6px 14px 14px}
 .friend-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 4px;border-bottom:1px solid #eef2f7}
 .friend-item:last-child{border-bottom:0}
+.theme-toggle{width:38px;height:38px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:50%!important}
+.login-theme{position:fixed;top:16px;left:16px;z-index:5}
+
+/* ===== دارک مود ===== */
+html[data-bs-theme=dark]{color-scheme:dark}
+html[data-bs-theme=dark]:root,html[data-bs-theme=dark] body{
+--primary:#818cf8;
+--primary-dark:#6366f1;
+--primary-soft:#1e1b4b;
+--bg:#0b1120;
+--surface:#131c31;
+--text:#e2e8f0;
+--muted:#94a3b8;
+--border:#26334d;
+--shadow:0 8px 28px rgba(0,0,0,.35)
+}
+html[data-bs-theme=dark] body{background:var(--bg);color:var(--text)}
+html[data-bs-theme=dark] .app-topbar{background:rgba(19,28,49,.95);box-shadow:0 3px 18px rgba(0,0,0,.35)}
+html[data-bs-theme=dark] .sidebar{background:var(--surface)}
+html[data-bs-theme=dark] .sidebar-title{color:#64748b}
+html[data-bs-theme=dark] .menu-btn:hover{background:#1e2a47;color:#a5b4fc}
+html[data-bs-theme=dark] .card-modern,
+html[data-bs-theme=dark] .role-card,
+html[data-bs-theme=dark] .login-box,
+html[data-bs-theme=dark] .friend-modal{background:var(--surface)}
+html[data-bs-theme=dark] .login-page{
+background:
+radial-gradient(circle at 10% 20%,rgba(99,102,241,.18),transparent 28%),
+radial-gradient(circle at 90% 80%,rgba(236,72,153,.12),transparent 28%),
+var(--bg)
+}
+html[data-bs-theme=dark] .login-box{box-shadow:0 20px 60px rgba(0,0,0,.45)}
+html[data-bs-theme=dark] .role-card:hover{border-color:#6366f1}
+html[data-bs-theme=dark] .form-control,
+html[data-bs-theme=dark] .form-select{
+background:#0f172a!important;
+color:var(--text)!important;
+border:1px solid #2d3b57!important
+}
+html[data-bs-theme=dark] .form-control::placeholder{color:#64748b}
+html[data-bs-theme=dark] .form-control:focus,
+html[data-bs-theme=dark] .form-select:focus{border-color:#818cf8!important;box-shadow:0 0 0 3px rgba(129,140,248,.2)!important}
+html[data-bs-theme=dark] .bg-white{background-color:var(--surface)!important}
+html[data-bs-theme=dark] .input-group-text{background:#0f172a!important;color:var(--muted);border-color:#2d3b57}
+html[data-bs-theme=dark] .category-card{
+background:linear-gradient(160deg,rgba(var(--rgb,79,70,229),.22),var(--surface) 70%);
+border-color:rgba(var(--rgb,79,70,229),.5)
+}
+html[data-bs-theme=dark] .book-cover{background:#1e293b}
+html[data-bs-theme=dark] .book-card:hover{border-color:#6366f1;box-shadow:0 18px 35px rgba(0,0,0,.45)}
+html[data-bs-theme=dark] .book-images img{border-color:var(--border)}
+html[data-bs-theme=dark] .tag{background:rgba(225,29,72,.15);color:#fda4af;border-color:rgba(225,29,72,.4)}
+html[data-bs-theme=dark] .upload-zone{background:#0f172a;border-color:#3b4a73}
+html[data-bs-theme=dark] .info-box{background:#0f172a;border-color:var(--border);color:var(--muted)}
+html[data-bs-theme=dark] .info-box strong{color:var(--text)}
+html[data-bs-theme=dark] .empty-state{color:#64748b}
+html[data-bs-theme=dark] .score-card{background:linear-gradient(135deg,#1e1b4b,var(--surface));border-color:#3730a3}
+html[data-bs-theme=dark] .level-badge{background:#2e1065;color:#c4b5fd}
+html[data-bs-theme=dark] .progress{background:#26334d}
+html[data-bs-theme=dark] .score-history-item{border-bottom-color:var(--border)}
+html[data-bs-theme=dark] .score-positive{color:#34d399}
+html[data-bs-theme=dark] .recommend-card{border-color:#4c1d95;background:linear-gradient(135deg,#2e1065,var(--surface))}
+html[data-bs-theme=dark] .notification-card{border-color:#1e3a8a;background:linear-gradient(135deg,#172554,var(--surface))}
+html[data-bs-theme=dark] .read-card{border-color:#14532d;background:linear-gradient(135deg,#052e16,var(--surface))}
+html[data-bs-theme=dark] .presentation-card{border-color:#7c2d12;background:linear-gradient(135deg,#431407,var(--surface))}
+html[data-bs-theme=dark] .friend-item{border-bottom-color:var(--border)}
+html[data-bs-theme=dark] .friend-modal{box-shadow:0 25px 60px rgba(0,0,0,.6)}
+html[data-bs-theme=dark] .text-secondary{color:var(--muted)!important}
+html[data-bs-theme=dark] .text-primary{color:#a5b4fc!important}
+html[data-bs-theme=dark] .stat-number{color:#a5b4fc}
+html[data-bs-theme=dark] .stat-number.text-success{color:#34d399}
+html[data-bs-theme=dark] .stat-number.text-warning{color:#fbbf24}
+html[data-bs-theme=dark] .table{--bs-table-color:var(--text);--bs-table-bg:transparent;--bs-table-border-color:var(--border)}
+html[data-bs-theme=dark] .border-top,
+html[data-bs-theme=dark] .border-bottom{border-color:var(--border)!important}
+html[data-bs-theme=dark] .btn-outline-secondary{color:#cbd5e1;border-color:#475569}
+html[data-bs-theme=dark] .btn-outline-secondary:hover{background:#334155;color:#fff}
 @media(max-width:900px){
 .app-layout{flex-direction:column}
 .sidebar{
@@ -414,6 +500,21 @@ let CLOUD_SAVING=false;
 let CLOUD_LOADING=false;
 
 const $=selector=>document.querySelector(selector);
+
+function currentTheme(){
+return document.documentElement.getAttribute("data-bs-theme")==="dark"?"dark":"light";
+}
+
+function themeIcon(){
+return currentTheme()==="dark"?"bi-sun-fill":"bi-moon-stars-fill";
+}
+
+function toggleTheme(){
+const next=currentTheme()==="dark"?"light":"dark";
+document.documentElement.setAttribute("data-bs-theme",next);
+try{localStorage.setItem("theme",next)}catch(e){}
+document.querySelectorAll(".theme-toggle i").forEach(i=>{i.className="bi "+themeIcon()});
+}
 
 function escapeHTML(value){
 return String(value??"").replace(/[&<>"']/g,char=>({
@@ -1253,6 +1354,10 @@ ${U.role==="admin"?"مدیر":escapeHTML(findStudent(U.code)?.name||"")}
 
 ${U.role==="student"?`<span class="badge text-bg-warning">${escapeHTML(levelName(studentLevel(U.code)))}</span>`:""}
 
+<button class="btn btn-sm btn-outline-secondary theme-toggle" onclick="toggleTheme()" title="تغییر حالت روشن/تاریک" aria-label="تغییر حالت روشن/تاریک">
+<i class="bi ${themeIcon()}"></i>
+</button>
+
 <button class="btn btn-sm btn-outline-danger" onclick="logout()">
 <i class="bi bi-box-arrow-right"></i>
 خروج
@@ -1297,6 +1402,9 @@ render();
 function loginView(){
 return`
 <div class="login-page">
+<button class="btn btn-outline-secondary theme-toggle login-theme" onclick="toggleTheme()" title="تغییر حالت روشن/تاریک" aria-label="تغییر حالت روشن/تاریک">
+<i class="bi ${themeIcon()}"></i>
+</button>
 <div class="login-box">
 
 <div class="text-center mb-4">
